@@ -83,10 +83,10 @@
 <body>
     <!--<h1><img src="./assets/img/logo.png" width="10%" alt=""></h1>-->
     <audio id="backgroundSFX" autoplay onended="changeMusic()"></audio>
-    <audio id="collisionSFX" src="./assets/sound/collision.ogg"></audio>
-    <audio id="fishSFX" src="./assets/sound/fish.ogg"></audio>
-    <audio id="buttonSFX" src="./assets/sound/choose.ogg"></audio>
-    <a href="#" onclick="changeMusic()">Change music</a>
+    <audio id="collisionSFX" class="SFX" src="./assets/sound/collision.ogg"></audio>
+    <audio id="fishSFX" class="SFX" src="./assets/sound/fish.ogg"></audio>
+    <audio id="buttonSFX" class="SFX" src="./assets/sound/choose.ogg"></audio>
+    <a href="#" onclick="switchSFX()">Отключить музыку</a>
 	<p>
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<!-- SeaHunt Game UPB -->
@@ -112,7 +112,7 @@
     </div>
 </body>
 <script src="./assets/js/jquery.js"></script>
-<script src="./assets/js/bgMusicHandler.js"></script>
+<script src="./assets/js/soundhandler.js"></script>
 <script src="./assets/js/input.js"></script>
 <script src="./assets/js/kanva.js"></script>
 <script src="./assets/js/game.js"></script>

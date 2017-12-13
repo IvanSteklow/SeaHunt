@@ -1,6 +1,9 @@
 var playlist = [];
 var bgS = document.getElementById("backgroundSFX");
+var SFX = document.getElementsByClassName("SFX");
+var SFXstate = true;
 bgS.volume = 0.2;
+SFX.volume = 1.0;
 for(var i = 0; i<3; i++)
     playlist[i] = "./assets/sound/background/"+i+".ogg";
 var offset = 0;
@@ -25,4 +28,16 @@ function pauseMusic(){
 }
 function playMusic(){
     bgS.play();
+}
+function switchSFX(){
+	if(SFXstate){
+	changeMusic();
+	stopMusic();
+	SFX.volume = 0;
+	SFXstate = false;
+	}else{
+	playMusic();
+	SFX.volume = 1.0;
+	SFXstate = true;
+	}
 }
