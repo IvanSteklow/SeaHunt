@@ -15,6 +15,16 @@ var velocityText = '';
 var layer = new Konva.Layer();
 var playerImg = new Image();
 var sandBoxText = '';
+var safezoneSY = [0];
+var safezoneFY = [0];
+for(var i = 1; i<canvasHeight/150; i++){
+	safezoneSY[i] = safezoneSY[i-1]+150;
+	console.log(safezoneSY[i]);
+}
+for(var i = 1; i<canvasHeight/60; i++){
+	safezoneFY[i] = safezoneFY[i-1]+60;
+	console.log(safezoneFY[i]);
+}
 var record = 0;
 playerImg.src = './assets/img/player.png';
 var sharkImg = new Image();
@@ -198,11 +208,11 @@ function checkCollisions() {
             var enemyPos = [],
                 enemySize = [];
 
-            enemyPos[0] = sharks[i].attrs.x;
+            enemyPos[0] = sharks[i].attrs.x+10;
             enemyPos[1] = sharks[i].attrs.y+10;
 
             enemySize[0] = 200;
-            enemySize[1] = 90;
+            enemySize[1] = 80;
             if (boxCollides(enemyPos, enemySize, pos, size)) {
                 document.getElementById("collisionSFX").play();
                 isDied = true;
@@ -295,12 +305,12 @@ function randomEnemies() {
     for (i = 0; i < 5; i++) {
         enemyFreq++;
         if (enemyFreq > 350) {
-            makeEnemy('fish', Math.floor((Math.random() * 200) + canvasWidth), Math.floor((Math.random() * 200) - player.attrs.y + 2));
-            makeEnemy('shark', Math.floor((Math.random() * 200) + canvasWidth), Math.floor((Math.random() * 300) + player.attrs.y - 5));
-            makeEnemy('fish', Math.floor((Math.random() * 200) + canvasWidth), Math.floor((Math.random() * 200) + player.attrs.y - 2));
-            makeEnemy('shark', Math.floor((Math.random() * 200) + canvasWidth), Math.floor((Math.random() * 300) - player.attrs.y + 5));
+            makeEnemy('fish', randomInteger(0, 100) + 10 + canvasWidth, safezoneFY[randomInteger(0, safezoneFY.length-1)]);
+            makeEnemy('shark', randomInteger(0, 200) + 50 + canvasWidth, safezoneSY[randomInteger(0, safezoneSY.length-1)]);
+            makeEnemy('fish', randomInteger(0, 100) + 10 + canvasWidth, safezoneFY[randomInteger(0, safezoneFY.length-1)]);
+            makeEnemy('shark', randomInteger(0, 200) + 50 + canvasWidth, safezoneSY[randomInteger(0, safezoneSY.length-1)]);
             console.log(enemyFreq);
-            enemyFreq -= 350;
+            enemyFreq -= 650;
         }
     }
 }
