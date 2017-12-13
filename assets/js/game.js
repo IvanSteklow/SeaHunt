@@ -188,23 +188,21 @@ function boxCollides(pos, size, pos2, size2) {
 
 function checkCollisions() {
     var i;
-    var pos = [];
+    var pos = [], size = [];
     pos[0] = player.attrs.x;
-    pos[1] = player.attrs.y
+    pos[1] = player.attrs.y;
+	size[0] = 150;
+    size[1] = 60;
     if (!isSandbox) {
         for (i = 0; i < sharks.length; i++) {
-            var size = [],
-                enemyPos = [],
+            var enemyPos = [],
                 enemySize = [];
 
-            size[0] = 150;
-            size[1] = 60;
-
             enemyPos[0] = sharks[i].attrs.x;
-            enemyPos[1] = sharks[i].attrs.y;
+            enemyPos[1] = sharks[i].attrs.y+10;
 
             enemySize[0] = 200;
-            enemySize[1] = 100;
+            enemySize[1] = 90;
             if (boxCollides(enemyPos, enemySize, pos, size)) {
                 document.getElementById("collisionSFX").play();
                 isDied = true;
@@ -215,12 +213,8 @@ function checkCollisions() {
     }
 
     for (i = 0; i < fishes.length; i++) {
-        var size = [],
-            enemyPos = [],
+        var enemyPos = [],
             enemySize = [];
-
-        size[0] = 150;
-        size[1] = 60;
 
         enemyPos[0] = fishes[i].attrs.x;
         enemyPos[1] = fishes[i].attrs.y;
