@@ -17,11 +17,11 @@ var playerImg = new Image();
 var sandBoxText = '';
 var safezoneSY = [0];
 var safezoneFY = [0];
-for(var i = 1; i<canvasHeight/150; i++){
+for (var i = 1; i<canvasHeight/150; i++){
 	safezoneSY[i] = safezoneSY[i-1]+150;
 	console.log(safezoneSY[i]);
 }
-for(var i = 1; i<canvasHeight/60; i++){
+for (var i = 1; i<canvasHeight/60; i++){
 	safezoneFY[i] = safezoneFY[i-1]+60;
 	console.log(safezoneFY[i]);
 }
@@ -305,10 +305,10 @@ function randomEnemies() {
     for (i = 0; i < 5; i++) {
         enemyFreq++;
         if (enemyFreq > 350) {
-            makeEnemy('fish', randomInteger(0, 100) + 10 + canvasWidth, safezoneFY[randomInteger(0, safezoneFY.length-1)]);
-            makeEnemy('shark', randomInteger(0, 200) + 50 + canvasWidth, safezoneSY[randomInteger(0, safezoneSY.length-1)]);
-            makeEnemy('fish', randomInteger(0, 100) + 10 + canvasWidth, safezoneFY[randomInteger(0, safezoneFY.length-1)]);
-            makeEnemy('shark', randomInteger(0, 200) + 50 + canvasWidth, safezoneSY[randomInteger(0, safezoneSY.length-1)]);
+            makeEnemy('fish', randomInteger(0, 100) + 10 + canvasWidth+110, safezoneFY[randomInteger(0, safezoneFY.length-1)]);
+            makeEnemy('shark', randomInteger(0, 200) + 50 + canvasWidth+360, safezoneSY[randomInteger(0, safezoneSY.length-1)]);
+            makeEnemy('fish', randomInteger(0, 100) + 10 + canvasWidth+110, safezoneFY[randomInteger(0, safezoneFY.length-1)]);
+            makeEnemy('shark', randomInteger(0, 200) + 50 + canvasWidth+360, safezoneSY[randomInteger(0, safezoneSY.length-1)]);
             console.log(enemyFreq);
             enemyFreq -= 650;
         }
