@@ -2,130 +2,136 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sea Hunt Game</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Sea Hunt Game</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
 
-        .gameScreen {
-            margin: 0px auto;
-            width: 800px;
-            height: 600px;
-            border: 1px solid black;
-            background: url('./assets/img/background.jpg') center center no-repeat;
-            background-size: cover;
-        }
+		.gameScreen {
+			margin: 0px auto;
+			width: 800px;
+			height: 600px;
+			border: 1px solid black;
+			background: url('./assets/img/background.jpg') center center no-repeat;
+			background-size: cover;
+		}
 
-        #game,
-        #deathScreen {
-            display: none;
-        }
+		#game,
+		#deathScreen,
+		#winScreen{
+			display: none;
+		}
 
-        #startScreenNavs {
-            font-family: 'Impact';
-            font-size: 28pt;
-            text-align: center;
-            position: relative;
-            top: 250px;
-            left: 300px;
-        }
+		#startScreenNavs {
+			font-family: 'Impact';
+			font-size: 28pt;
+			text-align: center;
+			position: relative;
+			top: 250px;
+			left: 300px;
+		}
 
-        #playbutton {
-            cursor: pointer;
-            width: 180px;
-            height: 50px;
-            background: #fff;
-            border-radius: 5px;
-            border: medium solid black;
-            transition: box-shadow 1s;
-        }
+		#playbutton {
+			cursor: pointer;
+			width: 180px;
+			height: 50px;
+			background: #fff;
+			border-radius: 5px;
+			border: medium solid black;
+			transition: box-shadow 1s;
+		}
 
-        #playbutton:hover {
-            box-shadow: 4px 4px 6px -1px rgba(0, 0, 0, 0.6);
-        }
+		#playbutton:hover {
+			box-shadow: 4px 4px 6px -1px rgba(0, 0, 0, 0.6);
+		}
 
-        #replaybutton {
-            cursor: pointer;
-            width: 200px;
-            height: 50px;
-            background: #fff;
-            border-radius: 5px;
-            border: medium solid black;
-            transition: box-shadow 1s;
-        }
+		#replaybutton {
+			cursor: pointer;
+			width: 200px;
+			height: 50px;
+			background: #fff;
+			border-radius: 5px;
+			border: medium solid black;
+			transition: box-shadow 1s;
+		}
 
-        #replaybutton:hover {
-            box-shadow: 4px 4px 6px -1px rgba(0, 0, 0, 0.6);
-        }
+		#replaybutton:hover {
+			box-shadow: 4px 4px 6px -1px rgba(0, 0, 0, 0.6);
+		}
 
-        h1 {
-            text-align: center;
-            margin: 5px;
-        }
+		h1 {
+			text-align: center;
+			margin: 5px;
+		}
 
-        p#rules {
-            font-size: 14pt;
-            color: white;
-            text-align: center;
-            position: relative;
-            top: 250px;
-            left: auto;
-        }
-    </style>
+		p#rules {
+			font-size: 14pt;
+			color: white;
+			text-align: center;
+			position: relative;
+			top: 250px;
+			left: auto;
+		}
+
+	</style>
 </head>
 
 <body>
-    <!--<h1><img src="./assets/img/logo.png" width="10%" alt=""></h1>-->
-    <audio id="backgroundSFX" autoplay onended="changeMusic()"></audio>
-    <audio id="collisionSFX" class="SFX" src="./assets/sound/collision.ogg"></audio>
-    <audio id="fishSFX" class="SFX" src="./assets/sound/fish.ogg"></audio>
-    <audio id="buttonSFX" class="SFX" src="./assets/sound/choose.ogg"></audio>
-    <a href="#" onclick="switchSFX()">Отключить музыку</a>
+	<!--<h1><img src="./assets/img/logo.png" width="10%" alt=""></h1>-->
+	<audio id="backgroundSFX" autoplay onended="changeMusic()"></audio>
+	<audio id="collisionSFX" class="SFX" src="./assets/sound/collision.ogg"></audio>
+	<audio id="fishSFX" class="SFX" src="./assets/sound/fish.ogg"></audio>
+	<audio id="buttonSFX" class="SFX" src="./assets/sound/choose.ogg"></audio>
+	<a href="#" onclick="switchSFX()">Отключить музыку</a>
 	<p>
-	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-	<!-- SeaHunt Game UPB -->
-	<ins class="adsbygoogle"
-		 style="display:inline-block;width:728px;height:90px"
-		 data-ad-client="ca-pub-7494441334666698"
-		 data-ad-slot="4443270609"></ins>
-	<script>
-	(adsbygoogle = window.adsbygoogle || []).push({});
-	</script>
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- SeaHunt Game UPB -->
+		<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-7494441334666698" data-ad-slot="4443270609"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+
+		</script>
 	</p>
-    <div id="game" class="gameScreen">
-    </div>
-    <div id="startScreen" class="gameScreen">
-        <span id="startScreenNavs">
+	<div id="game" class="gameScreen">
+	</div>
+	<div id="startScreen" class="gameScreen">
+		<span id="startScreenNavs">
     <p id="playbutton" onclick="startGame()">Играть!</p>
     </span>
-        <p id="rules">Правила игры: <br> Вам нужно избегать акул и ловить рыбок. <br> Управление клавишами WASD и стрелками.
-        </p>
-    </div>
-    <div id="deathScreen" class="gameScreen">
-        <span id="startScreenNavs"><p id="replaybutton" onclick="restartGame()">Переиграть!</p></span>
-    </div><!-- Start of StatCounter Code for Default Guide -->
-<script type="text/javascript">
-var sc_project=11583285; 
-var sc_invisible=0; 
-var sc_security="71df2705"; 
-var scJsHost = (("https:" == document.location.protocol) ?
-"https://secure." : "http://www.");
-document.write("<sc"+"ript type='text/javascript' src='" +
-scJsHost+
-"statcounter.com/counter/counter.js'></"+"script>");
-</script>
-<noscript><div class="statcounter"><a title="Web Analytics
+		<p id="rules">Правила игры: <br> Вам нужно избегать акул и ловить рыбок. <br> Управление клавишами WASD и стрелками.
+		</p>
+	</div>
+	<div id="deathScreen" class="gameScreen">
+		<span id="startScreenNavs"><p id="replaybutton" onclick="restartGame()">Переиграть!</p></span>
+	</div>
+	<div id="winScreen" class="gameScreen">
+		<span id="startScreenNavs"><p id="replaybutton" onclick="restartGame()">Вы выиграли!</p></span>
+	</div>
+	<!-- Start of StatCounter Code for Default Guide -->
+	<script type="text/javascript">
+		var sc_project = 11583285;
+		var sc_invisible = 0;
+		var sc_security = "71df2705";
+		var scJsHost = (("https:" == document.location.protocol) ?
+			"https://secure." : "http://www.");
+		document.write("<sc" + "ript type='text/javascript' src='" +
+			scJsHost +
+			"statcounter.com/counter/counter.js'></" + "script>");
+
+	</script>
+	<noscript><div class="statcounter"><a title="Web Analytics
 Made Easy - StatCounter" href="http://statcounter.com/"
 target="_blank"><img class="statcounter"
 src="//c.statcounter.com/11583285/0/71df2705/0/" alt="Web
 Analytics Made Easy - StatCounter"></a></div></noscript>
-<!-- End of StatCounter Code for Default Guide --></body>
+	<!-- End of StatCounter Code for Default Guide -->
+</body>
 <script src="./assets/js/jquery.js"></script>
 <script src="./assets/js/soundhandler.js"></script>
 <script src="./assets/js/input.js"></script>

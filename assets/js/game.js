@@ -77,6 +77,7 @@ function startGame() {
     isDied = false;
     $('#startScreen').hide();
     $('#deathScreen').hide();
+    $('#winScreen').hide();
     $('#game').fadeIn();
     stage.visible(true);
     layer.add(player);
@@ -292,8 +293,7 @@ function checkCollisions() {
                 sharkSpeed++;
             }
             if(howFish+1==75){
-                velocity++;
-                sharkSpeed++;
+                onWin();
             }
             howFish++;
         }
@@ -326,6 +326,19 @@ function onDie() {
     $("#deathScreen").append('<p id="rules">Ваш счет: ' + howFish + '</p>');
     $("#deathScreen").append('<p id="rules">Ваш рекорд: ' + record + '</p>');
     $("#deathScreen").fadeIn();
+}
+
+function onWin() {
+    document.getElementById("backgroundSFX").volume = 0.2;
+	document.getElementById("collisionSFX").play();
+    isDied = true;
+	howFish++;
+    gameLoop.stop();
+    $("#game").hide();
+    $('#winScreen').html('<span id="startScreenNavs"><p id="replaybutton" onclick="hardReset()">Заново</p></span>');
+    $("#winScreen").append('<p id="rules">Поздравляем! Вы победили!</p>');
+    $("#winScreen").append('<p id="rules">Ваш счет: ' + howFish + '</p>');
+    $("#winScreen").fadeIn();
 }
 
 function restartGame() {
@@ -386,5 +399,10 @@ function restartGame() {
     }, layer);
     stage.visible(false);
     startGame();
+}
+
+function hardReset() {
+	record = 0;
+    restartGame();
 }
 //$("html").html('');
